@@ -38,15 +38,15 @@
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^10.0.5",
     "zod": "^3.25.67",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/react": "^18",
+    "@types/node": "^20"
   },
   "overrides": {
     "react": "$react",
     "react-dom": "$react-dom"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/node": "^20",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^10.1.5",
