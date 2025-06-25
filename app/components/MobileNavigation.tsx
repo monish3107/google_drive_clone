@@ -4,20 +4,18 @@ import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  SheetTrigger
+} from '../../components/ui/sheet';
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Separator } from "@/components/ui/separator";
-import { navItems, avatarPlaceholderUrl } from "@/constants";
+import { Separator } from '../../components/ui/separator';
+import { navItems, avatarPlaceholderUrl } from '../../constants';
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from '../../lib/utils';
 import { Button } from "./ui/button";
 import FileUploader from "./FileUploader";
-import { signOutUser } from "@/lib/actions/user.actions";
+import { signOutUser } from '../../lib/actions/user.actions';
 
 interface Props {
   $id: string,

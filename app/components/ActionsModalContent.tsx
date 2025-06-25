@@ -2,8 +2,8 @@ import { Models } from "node-appwrite";
 import React from "react";
 import Thumbnail from "./Thumbnail";
 import FormattedDateTime from "./FormattedDateTime";
-import { constructFileUrl, convertFileSize, formatDateTime } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
+import { constructFileUrl, convertFileSize, formatDateTime } from "../../lib/utils";
+import { Input } from "../../components/ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
 

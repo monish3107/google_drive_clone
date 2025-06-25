@@ -7,18 +7,18 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "../../components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../../components/ui/dropdown-menu";
 import { Models } from "node-appwrite";
 import Image from "next/image";
-import { actionsDropdownItems } from "@/constants";
-import { constructDownloadUrl } from "@/lib/utils";
+import { actionsDropdownItems } from "../../constants";
+import { constructDownloadUrl } from "../../lib/utils";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
