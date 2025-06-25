@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { avatarPlaceholderUrl, navItems } from '@/constants'
 import { cn } from '@/lib/utils'
@@ -12,8 +12,7 @@ interface Props {
   email: string
 }
 
-const Sidebar = ({fullName, avatar, email}: Props) => {
-
+const Sidebar = ({ fullName, avatar, email }: Props) => {
   const pathname = usePathname()
 
   return <aside className='sidebar'>
@@ -25,17 +24,17 @@ const Sidebar = ({fullName, avatar, email}: Props) => {
 
     <nav className='sidebar-nav'>
       <ul className='flex flex-1 flex-col gap-6'>
-        
-        {navItems.map(({url, name, icon}) => (
+
+        {navItems.map(({ url, name, icon }) => (
 
           <Link key={name} href={url} className='lg:w-full'>
-            <li className={cn("sidebar-nav-item", pathname === url && "shad-active")}>
+            <li className={cn('sidebar-nav-item', pathname === url && 'shad-active')}>
               <Image src={icon} alt={name} width={24} height={24} className={cn('nav-icon', pathname === url && 'nav-icon-active')} />
               <p className='hidden lg:block'>{name}</p>
             </li>
           </Link>
         )
-      )}
+        )}
 
       </ul>
     </nav>
@@ -49,7 +48,6 @@ const Sidebar = ({fullName, avatar, email}: Props) => {
           <p className='caption'>{email} </p>
         </div>
       </div>
-
 
   </aside>
 }

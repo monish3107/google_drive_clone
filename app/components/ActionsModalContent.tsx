@@ -1,11 +1,11 @@
-import { Models } from "node-appwrite";
-import React from "react";
-import Thumbnail from "./Thumbnail";
-import FormattedDateTime from "./FormattedDateTime";
-import { constructFileUrl, convertFileSize, formatDateTime } from "../../lib/utils";
-import { Input } from "../../components/ui/input";
-import { Button } from "./ui/button";
-import Image from "next/image";
+import { Models } from 'node-appwrite'
+import React from 'react'
+import Thumbnail from './Thumbnail'
+import FormattedDateTime from './FormattedDateTime'
+import { constructFileUrl, convertFileSize, formatDateTime } from '../../lib/utils'
+import { Input } from '../../components/ui/input'
+import { Button } from './ui/button'
+import Image from 'next/image'
 
 const ImageThumbnail = ({ file }: { file: Models.Document }) => (
     <div className="file-details-thumbnail">
@@ -15,14 +15,14 @@ const ImageThumbnail = ({ file }: { file: Models.Document }) => (
       <FormattedDateTime date={file.$createdAt} className="caption" />
     </div>
   </div>
-);
+)
 
 const DetailRow = ({ label, value }: { label: string; value: string }) => (
     <div className="flex">
     <p className="file-details-label text-left">{label}</p>
     <p className="file-details-value text-left">{value}</p>
   </div>
-);
+)
 
 interface Props {
     file: Models.Document;
@@ -30,14 +30,14 @@ interface Props {
     onRemove: (email: string) => void;
 }
 
-export const ShareInput = ({file, onInputChange, onRemove}: Props) => {
+export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
   return (
     <>
     <ImageThumbnail file={file} />
 
     <div className="share-wrapper">
         <p className="subtitle-2 pl-1 text-light-100">Share file with other users</p>
-        <Input type="email" placeholder="Enter email address" onChange={e=> onInputChange(e.target.value.trim().split(","))}  className="share-input-field"/>
+        <Input type="email" placeholder="Enter email address" onChange={e => onInputChange(e.target.value.trim().split(','))} className="share-input-field"/>
         <div className="pt-4">
             <div className="flex justify-between">
                 <p className="subtilte-2 text-light-100">Shared with</p>
@@ -47,7 +47,7 @@ export const ShareInput = ({file, onInputChange, onRemove}: Props) => {
                 {file.users.map((email: string) => (
                     <li key={email} className="flex items-center justify-between gap-2" >
                         <p className="subtitle-2">{email}</p>
-                        <Button onClick={()=> onRemove(email)} className="share-remove-user">
+                        <Button onClick={() => onRemove(email)} className="share-remove-user">
                             <Image src="assets/icons/remove.svg" alt="remove" width={24} height={24} className="remove-icon" />
                         </Button>
                     </li>
@@ -70,7 +70,5 @@ export const FileDetails = ({ file }: { file: Models.Document }) => {
         <DetailRow label="Last edit:" value={formatDateTime(file.$updatedAt)} />
       </div>
     </>
-  );
-};
-
-
+  )
+}

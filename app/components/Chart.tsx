@@ -1,38 +1,38 @@
-"use client";
+'use client'
 
 import {
   Label,
   PolarGrid,
   PolarRadiusAxis,
   RadialBar,
-  RadialBarChart,
-} from "recharts";
+  RadialBarChart
+} from 'recharts'
 
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { calculatePercentage, convertFileSize } from "@/lib/utils";
+  CardDescription
+} from '@/components/ui/card'
+import { ChartConfig, ChartContainer } from '@/components/ui/chart'
+import { convertFileSize } from '@/lib/utils'
 
 const chartConfig = {
   size: {
-    label: "Size",
+    label: 'Size'
   },
   used: {
-    label: "Used",
-    color: "white",
-  },
-} satisfies ChartConfig;
+    label: 'Used',
+    color: 'white'
+  }
+} satisfies ChartConfig
 
 export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: number; total?: number }) => {
-  const chartData = [{ name: "Used", value: used, fill: "white" }];
+  const chartData = [{ name: 'Used', value: used, fill: 'white' }]
 
   // Use both used and total for percentage
-  const percent = total ? Math.round((used / total) * 100) : 0;
+  const percent = total ? Math.round((used / total) * 100) : 0
 
   return (
     <Card className="chart">
@@ -56,7 +56,7 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
               <Label
                 content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                  if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                     return (
                       <text
                         x={viewBox.cx}
@@ -79,7 +79,7 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
                           Space used
                         </tspan>
                       </text>
-                    );
+                    )
                   }
                 }}
               />
@@ -90,9 +90,9 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
       <CardHeader className="chart-details">
         <CardTitle className="chart-title">Available Storage</CardTitle>
         <CardDescription className="chart-description">
-          {used ? convertFileSize(used) : "2GB"} / {convertFileSize(total)}
+          {used ? convertFileSize(used) : '2GB'} / {convertFileSize(total)}
         </CardDescription>
       </CardHeader>
     </Card>
-  );
-};
+  )
+}

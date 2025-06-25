@@ -1,71 +1,67 @@
-"use client"
+'use client'
 
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage, 
-} from "./ui/form";
-import { Input } from "../../components/ui/input";
-import Image from "next/image";
-import { useState } from "react";
-import Link from "next/link";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { createAccount, signInUser } from "../../lib/actions/user.actions";
-import OtpModel from "./OTPModel";
-import { Button } from "./ui/button";
+  FormMessage
+} from './ui/form'
+import { Input } from '../../components/ui/input'
+import Image from 'next/image'
+import { useState } from 'react'
+import Link from 'next/link'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { createAccount, signInUser } from '../../lib/actions/user.actions'
+import OtpModel from './OTPModel'
+import { Button } from './ui/button'
 
-type FormType = "sign-in" | "sign-up";
+type FormType = 'sign-in' | 'sign-up';
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
-    email:  z.string().email(),
-    fullName: formType === "sign-up" ? z.string().min(2).max(50) : z.string().optional(),
-  });
-};
+    email: z.string().email(),
+    fullName: formType === 'sign-up' ? z.string().min(2).max(50) : z.string().optional()
+  })
+}
 
-const AuthForm = ({type}: {type: FormType}) => {
-  
-  const [isLoading, setisLoading] = useState(false);
-  const [errorMessage, seterrorMessage] = useState('');
-  const [accountId, setaccountId] = useState(null);
+const AuthForm = ({ type }: {type: FormType}) => {
+  const [isLoading, setisLoading] = useState(false)
+  const [errorMessage, seterrorMessage] = useState('')
+  const [accountId, setaccountId] = useState(null)
 
-  const formSchema = authFormSchema(type);
+  const formSchema = authFormSchema(type)
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "", email: ""
-    },
+      fullName: '', email: ''
+    }
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setisLoading(true);
-    seterrorMessage('');
+    setisLoading(true)
+    seterrorMessage('')
 
     try {
+      const user =
+        type === 'sign-up'
+          ? await createAccount({
+            fullName: values.fullName || '',
+            email: values.email
+          })
+          : await signInUser({ email: values.email })
 
-      const user = 
-        type === 'sign-up' ? await createAccount({
-        fullName: values.fullName || "",
-        email: values.email, })
-        : await signInUser({email: values.email})
-  
-      setaccountId(user.accountId);
-
+      setaccountId(user.accountId)
     } catch {
-      seterrorMessage("Failed to create an account. Please try again");
+      seterrorMessage('Failed to create an account. Please try again')
     } finally {
       setisLoading(false)
     }
-
-    
   }
 
   return (
@@ -137,7 +133,7 @@ const AuthForm = ({type}: {type: FormType}) => {
       </form>
     </Form>
     {accountId && (
-      <OtpModel email={form.getValues("email")} accountId={accountId} />
+      <OtpModel email={form.getValues('email')} accountId={accountId} />
     )}
     </>
   )

@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
 
-declare type FileType = "document" | "image" | "video" | "audio" | "other";
+import type * as React from 'react'
+import type { Models } from 'node-appwrite'
+
+type SegmentParams = Record<string, unknown>
+
+declare type FileType = 'document' | 'image' | 'video' | 'audio' | 'other';
 
 declare interface ActionType {
   label: string;

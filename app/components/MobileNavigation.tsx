@@ -1,21 +1,21 @@
-"use client"
+'use client'
 
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger
-} from '../../components/ui/sheet';
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Separator } from '../../components/ui/separator';
-import { navItems, avatarPlaceholderUrl } from '../../constants';
-import Link from "next/link";
-import { cn } from '../../lib/utils';
-import { Button } from "./ui/button";
-import FileUploader from "./FileUploader";
-import { signOutUser } from '../../lib/actions/user.actions';
+} from '../../components/ui/sheet'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { Separator } from '../../components/ui/separator'
+import { navItems, avatarPlaceholderUrl } from '../../constants'
+import Link from 'next/link'
+import { cn } from '../../lib/utils'
+import { Button } from './ui/button'
+import FileUploader from './FileUploader'
+import { signOutUser } from '../../lib/actions/user.actions'
 
 interface Props {
   $id: string,
@@ -25,10 +25,9 @@ interface Props {
   email: string,
 }
 
-const MobileNavigation = ({$id: ownerId, accountId, fullName, avatar, email}: Props) => {
-
-  const [open, setopen] = useState(false);
-  const pathName = usePathname();
+const MobileNavigation = ({ $id: ownerId, accountId, fullName, avatar, email }: Props) => {
+  const [open, setopen] = useState(false)
+  const pathName = usePathname()
 
   return (
     <header className="mobile-header">
@@ -54,15 +53,15 @@ const MobileNavigation = ({$id: ownerId, accountId, fullName, avatar, email}: Pr
               </div>
               <Separator className="mb-4 bg-light-200/20"/>
             </SheetTitle>
-            
+
             <nav className="mobile-nav">
             <ul className="mobile-nav-list">
               {navItems.map(({ url, name, icon }) => (
                 <Link key={name} href={url} className="lg:w-full">
                   <li
                     className={cn(
-                      "mobile-nav-item",
-                      pathName === url && "shad-active",
+                      'mobile-nav-item',
+                      pathName === url && 'shad-active'
                     )}
                   >
                     <Image
@@ -71,8 +70,8 @@ const MobileNavigation = ({$id: ownerId, accountId, fullName, avatar, email}: Pr
                       width={24}
                       height={24}
                       className={cn(
-                        "nav-icon",
-                        pathName === url && "nav-icon-active",
+                        'nav-icon',
+                        pathName === url && 'nav-icon-active'
                       )}
                     />
                     <p>{name}</p>
@@ -86,16 +85,16 @@ const MobileNavigation = ({$id: ownerId, accountId, fullName, avatar, email}: Pr
               <div className="flex flex-col justify-between gap-5 pb-5">
                 <FileUploader ownerId={ownerId} accountId={accountId}/>
 
-                <Button type='submit' className='mobile-sign-out-button' onClick={async()=> await signOutUser()}>
+                <Button type='submit' className='mobile-sign-out-button' onClick={async () => await signOutUser()}>
                           <Image src='/assets/icons/logout.svg' alt='logout' width={24} height={24}/>
                         <p>Logout</p>
                         </Button>
               </div>
-          
+
         </SheetContent>
       </Sheet>
     </header>
-  );
-};
+  )
+}
 
-export default MobileNavigation;
+export default MobileNavigation

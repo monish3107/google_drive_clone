@@ -1,20 +1,19 @@
-"use client"
+'use client'
 
-import React from "react";
+import React from 'react'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { usePathname, useRouter } from "next/navigation";
-import { sortTypes } from "@/constants";
+  SelectValue
+} from '@/components/ui/select'
+import { usePathname, useRouter } from 'next/navigation'
+import { sortTypes } from '@/constants'
 
 const Sort = () => {
-
-  const path = usePathname();
-  const router = useRouter();
+  const path = usePathname()
+  const router = useRouter()
 
   const handleSort = (value: string) => {
     router.push(`${path}?sort=${value}`)
@@ -33,7 +32,7 @@ const Sort = () => {
         ))}
       </SelectContent>
     </Select>
-  );
-};
+  )
+}
 
-export default Sort;
+export default Sort
