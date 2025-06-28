@@ -66,28 +66,31 @@ const MobileNavigation = ({ $id: ownerId, accountId, fullName, avatar, email }: 
 
             <nav className="mobile-nav">
               <ul className="mobile-nav-list">
-                {navItems.map(({ url, name, icon }) => (
-                  <Link key={name} href={url} className="w-full" onClick={() => setopen(false)}>
-                    <li
-                      className={cn(
-                        'mobile-nav-item',
-                        pathName === url && 'shad-active'
-                      )}
-                    >
-                      <Image
-                        src={icon}
-                        alt={name}
-                        width={24}
-                        height={24}
+                {navItems.map(({ url, name, icon }) => {
+                  const linkUrl = name === 'Dashboard' ? url : `/dashboard${url}`
+                  return (
+                    <Link key={name} href={linkUrl} className="w-full" onClick={() => setopen(false)}>
+                      <li
                         className={cn(
-                          'nav-icon',
-                          pathName === url && 'nav-icon-active'
+                          'mobile-nav-item',
+                          pathName === linkUrl && 'shad-active'
                         )}
-                      />
-                      <p>{name}</p>
-                    </li>
-                  </Link>
-                ))}
+                      >
+                        <Image
+                          src={icon}
+                          alt={name}
+                          width={24}
+                          height={24}
+                          className={cn(
+                            'nav-icon',
+                            pathName === linkUrl && 'nav-icon-active'
+                          )}
+                        />
+                        <p>{name}</p>
+                      </li>
+                    </Link>
+                  )
+                })}
               </ul>
             </nav>
 

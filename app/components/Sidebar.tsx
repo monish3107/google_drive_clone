@@ -35,10 +35,9 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-6">
           {navItems.map(({ url, name, icon }) => {
-            // Dashboard stays as /dashboard, others get prefixed with /dashboard
             const linkUrl = name === "Dashboard" ? url : `/dashboard${url}`;
             return (
-              <Link key={name} href={linkUrl} className="lg:w-full">
+              <Link key={name} href={linkUrl} className="w-full" onClick={() => setopen(false)}>
                 <li
                   className={cn(
                     "sidebar-nav-item",
@@ -58,7 +57,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
                   <p className="hidden lg:block">{name}</p>
                 </li>
               </Link>
-            );
+            )
           })}
         </ul>
       </nav>
@@ -66,7 +65,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
       {/* <Image src="/assets/images/files-2.png" alt='logo' width={506} height={418} className='w-full'/> */}
       <div className="sidebar-user-info">
         <Image
-          src={avatar && avatar.trim() !== "" ? avatar : avatarPlaceholderUrl}
+          src={avatar && avatar.trim() !== '' ? avatar : avatarPlaceholderUrl}
           alt="avatar"
           width={44}
           height={44}
@@ -79,7 +78,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         </div>
       </div>
     </aside>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
