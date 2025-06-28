@@ -1,0 +1,26 @@
+{
+  "name": "Cloudora - Cloud Storage Platform",
+  "short_name": "Cloudora",
+  "description": "Your one-stop cloud solution for secure file storage, sharing, and collaboration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3F83F8",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icons/logo-brand.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+} 

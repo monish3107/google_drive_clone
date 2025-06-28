@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Chart } from './components/Chart'
 
 export default function LandingPage () {
   return (
@@ -16,7 +15,7 @@ export default function LandingPage () {
           <Link href="/sign-up">
             <Button size="sm" className="primary-btn text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3">Get Started</Button>
           </Link>
-          <Link href="/sign-in">
+          <Link href="/sign-in" className="hidden sm:block">
             <Button size="sm" variant="outline" className="border-2 border-black hover:bg-gray-100 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3">Sign In</Button>
           </Link>
         </div>
@@ -44,7 +43,7 @@ export default function LandingPage () {
               </Link>
               <Link href="/sign-in">
                 <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 h-12 sm:h-14 border-2 border-black hover:bg-gray-100 w-full sm:w-auto">
-                  Get Started
+                  Sign In
                 </Button>
               </Link>
             </div>
@@ -120,9 +119,21 @@ export default function LandingPage () {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0_0_#000] p-6 sm:p-8 lg:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              <div className="flex justify-center">
-                <div className="w-full max-w-xs sm:max-w-sm h-48 sm:h-64 lg:h-80">
-                  <Chart used={800 * 1024 * 1024} total={2 * 1024 * 1024 * 1024} />
+              <div className="flex justify-center w-full">
+                <div className="w-full max-w-[220px] sm:max-w-[300px] md:max-w-[350px] mx-auto flex flex-col items-center">
+                  {/* Static Storage Progress Bar */}
+                  <div className="w-full bg-gray-200 rounded-full h-8 flex items-center relative mb-4">
+                    <div
+                      className="bg-black h-8 rounded-full"
+                      style={{ width: '30%' }} // 30% used, adjust as needed
+                    ></div>
+                    <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-base font-bold text-black drop-shadow">
+                      30% Used
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    800 MB of 2 GB used
+                  </div>
                 </div>
               </div>
               <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
@@ -211,13 +222,15 @@ export default function LandingPage () {
             <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-slate-900 opacity-90">Join users who trust Cloudora for their file storage needs.</p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/sign-up" className="w-full sm:w-auto">
-                <Button size="lg" className="bg-black text-blue-600 hover:bg-white hover:text-black text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 h-12 sm:h-14 font-semibold w-full sm:w-auto">
-                  Create your free account
+                <Button size="lg" className="bg-black text-blue-600 hover:bg-white hover:text-black text-sm sm:text-base lg:text-lg px-4 sm:px-6 lg:px-8 py-3 sm:py-4 h-12 sm:h-14 font-semibold w-full sm:w-auto">
+                  <span className="hidden sm:inline">Create your free account</span>
+                  <span className="sm:hidden">Get Started</span>
                 </Button>
               </Link>
               <Link href="/sign-in" className="w-full sm:w-auto">
-                <Button size="lg" className="bg-pixel-blue-dark text-blue-600 hover:bg-white hover:text-black text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 h-12 sm:h-14 font-semibold w-full sm:w-auto">
-                  Sign in to existing account
+                <Button size="lg" className="bg-pixel-blue-dark text-blue-600 hover:bg-white hover:text-black text-sm sm:text-base lg:text-lg px-4 sm:px-6 lg:px-8 py-3 sm:py-4 h-12 sm:h-14 font-semibold w-full sm:w-auto">
+                  <span className="hidden sm:inline">Sign in to existing account</span>
+                  <span className="sm:hidden">Sign In</span>
                 </Button>
               </Link>
             </div>

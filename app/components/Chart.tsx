@@ -35,22 +35,22 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
   const percent = total ? Math.round((used / total) * 100) : 0
 
   return (
-    <Card className="chart">
+    <Card className="chart w-full h-full">
       <CardContent className="flex-1 p-0">
-        <ChartContainer config={chartConfig} className="chart-container">
+        <ChartContainer config={chartConfig} className="chart-container w-full h-full min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]">
           <RadialBarChart
             data={chartData}
             startAngle={90}
             endAngle={percent * 3.6 + 90}
-            innerRadius={80}
-            outerRadius={110}
+            innerRadius="60%"
+            outerRadius="80%"
           >
             <PolarGrid
               gridType="circle"
               radialLines={false}
               stroke="none"
               className="polar-grid"
-              polarRadius={[86, 74]}
+              polarRadius={['70%', '60%']}
             />
             <RadialBar dataKey="value" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
@@ -67,14 +67,14 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="chart-total-percentage"
+                          className="chart-total-percentage text-lg sm:text-xl font-bold"
                         >
                           {percent}%
                         </tspan>
                         <tspan
                           x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-white/70"
+                          y={(viewBox.cy || 0) + 20}
+                          className="fill-white/70 text-xs sm:text-sm"
                         >
                           Space used
                         </tspan>
@@ -88,8 +88,8 @@ export const Chart = ({ used = 0, total = 2 * 1024 * 1024 * 1024 }: { used: numb
         </ChartContainer>
       </CardContent>
       <CardHeader className="chart-details">
-        <CardTitle className="chart-title">Available Storage</CardTitle>
-        <CardDescription className="chart-description">
+        <CardTitle className="chart-title text-base sm:text-lg">Available Storage</CardTitle>
+        <CardDescription className="chart-description text-sm sm:text-base">
           {used ? convertFileSize(used) : '2GB'} / {convertFileSize(total)}
         </CardDescription>
       </CardHeader>

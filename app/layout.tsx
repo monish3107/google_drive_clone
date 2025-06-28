@@ -11,7 +11,53 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Cloudora | A Cloud Storage Platform',
-  description: 'Your one-stop cloud solution'
+  description: 'Your one-stop cloud solution for secure file storage, sharing, and collaboration. Store, organize, and access your files from anywhere.',
+  keywords: 'cloud storage, file sharing, document management, secure storage, file upload',
+  authors: [{ name: 'Cloudora Team' }],
+  creator: 'Cloudora',
+  publisher: 'Cloudora',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Cloudora | A Cloud Storage Platform',
+    description: 'Your one-stop cloud solution for secure file storage, sharing, and collaboration.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Cloudora'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cloudora | A Cloud Storage Platform',
+    description: 'Your one-stop cloud solution for secure file storage, sharing, and collaboration.'
+  },
+  icons: {
+    icon: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml'
+      },
+      {
+        url: '/favicon.ico',
+        sizes: 'any'
+      }
+    ],
+    apple: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml'
+      }
+    ],
+    shortcut: '/favicon.ico'
+  },
+  manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1
+  },
+  other: {
+    'theme-color': '#3F83F8',
+    'msapplication-TileColor': '#3F83F8'
+  }
 }
 
 export default function RootLayout ({
