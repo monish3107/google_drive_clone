@@ -218,57 +218,68 @@
 
   /* Dashboard */
   .dashboard-container {
-    @apply mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 xl:gap-10 !important;
+    @apply mx-auto grid max-w-7xl grid-cols-1 gap-4 p-4 sm:gap-6 sm:p-6 md:grid-cols-2 xl:gap-10 !important;
+    align-items: start;
   }
   .dashboard-summary-list {
-    @apply mt-6 grid grid-cols-1 gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9 !important;
+    @apply mt-4 grid grid-cols-1 gap-3 sm:mt-6 sm:gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9 !important;
+    background: none;
+    border: none;
+    box-shadow: none;
   }
   .dashboard-summary-card {
-    @apply relative mt-6 rounded-[20px] bg-white p-5 transition-all hover:scale-105 border-2 border-black shadow-sm hover:shadow-md !important;
-    /* Folder-like border design */
-    /* border-top-left-radius: 8px !important;
-    border-top-right-radius: 8px !important;
-    border-bottom-left-radius: 20px !important;
-    border-bottom-right-radius: 20px !important; */
-    /* Add a small tab-like element at the top */
+    @apply relative mt-4 rounded-[20px] bg-light-400 p-4 transition-all hover:scale-105 border-2 border-light-300 shadow-md hover:shadow-xl sm:mt-6 sm:p-5 !important;
+    /* Modern card design */
     position: relative !important;
   }
   .dashboard-summary-card::before {
     content: '' !important;
     position: absolute !important;
-    top: -2px !important;
-    left: 20px !important;
-    right: 20px !important;
-    height: 8px !important;
-    background: black !important;
-    border: 2px solid black !important;
-    border-bottom: none !important;
-    border-top-left-radius: 4px !important;
-    border-top-right-radius: 4px !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, #3F83F8, #2563EB, #93C5FD) !important;
+    border-top-left-radius: 18px !important;
+    border-top-right-radius: 18px !important;
+  }
+  .dashboard-summary-card:hover::before {
+    background: linear-gradient(90deg, #2563EB, #1d4ed8, #3F83F8) !important;
+  }
+  .dashboard-summary-card:hover {
+    @apply border-brand !important;
+    transform: translateY(-2px) !important;
   }
   .summary-type-icon {
-    @apply hidden !important;
+    @apply w-8 h-8 sm:w-10 sm:h-10 object-contain !important;
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: none !important;
+    padding: 0.25rem;
   }
   .summary-type-size {
-    @apply h4 w-full text-right !important;
+    @apply h4 w-full text-right text-sm sm:text-base font-bold text-light-100 !important;
   }
   .summary-type-title {
-    @apply h5 text-center !important;
+    @apply h5 text-center text-sm sm:text-base font-semibold text-light-100 !important;
   }
   .dashboard-recent-files {
-    @apply h-full rounded-[20px] bg-white p-5 xl:p-8 !important;
+    @apply h-full rounded-[20px] bg-light-400 p-4 sm:p-5 xl:p-8 border-2 border-light-300 shadow-md !important;
   }
   .recent-file-details {
-    @apply flex w-full flex-col xl:flex-row xl:justify-between !important;
+    @apply flex w-full flex-col gap-2 xl:flex-row xl:justify-between !important;
+    min-width: 0; /* Prevent flex items from overflowing */
   }
   .recent-file-name {
-    @apply subtitle-2 line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px] !important;
+    @apply subtitle-2 line-clamp-1 w-full text-light-100 text-sm sm:text-base !important;
+    max-width: 100%
   }
   .recent-file-date {
-    @apply body-2 text-light-100/80 !important;
+    @apply body-2 text-light-100/80 text-xs sm:text-sm !important;
   }
   .empty-list {
-    @apply body-1 mt-10 text-center text-light-200 !important;
+    @apply body-1 mt-6 text-center text-light-200 text-sm sm:text-base sm:mt-10 !important;
   }
 
   /* Type page */
@@ -350,25 +361,42 @@
 
   /* Chart */
   .chart {
-    @apply flex items-center rounded-[20px] bg-brand p-5 text-white md:flex-col xl:flex-row !important;
+    @apply flex flex-col items-center justify-center rounded-[24px] border border-white shadow-lg p-6 sm:p-8 w-full max-w-xs !important;
+    background: #F8FAFC;
+    min-height: unset;
+    max-width: 320px;
+    max-height: 320px;
   }
   .chart-container {
-    @apply mx-auto aspect-square w-[180px] text-white xl:w-[250px] !important;
-  }
-  .polar-grid {
-    @apply first:fill-white/20 last:fill-brand !important;
+    @apply mx-auto aspect-square w-[110px] sm:w-[140px] xl:w-[160px] flex items-center justify-center bg-white/70 rounded-full !important;
+    box-shadow: 0 2px 8px 0 rgba(31, 41, 55, 0.06);
   }
   .chart-details {
-    @apply flex-1 items-start px-3 py-0 sm:px-5 lg:p-3 xl:pr-5 !important;
+    @apply flex flex-col items-center justify-center mt-4 !important;
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: none !important;
+    padding: 0.75rem 0.5rem;
+    width: 100%;
+    margin-top: 1.25rem;
   }
   .chart-total-percentage {
-    @apply fill-white text-4xl font-bold !important;
+    @apply text-brand text-3xl sm:text-4xl font-extrabold drop-shadow !important;
   }
   .chart-title {
-    @apply h3 font-bold md:text-center lg:text-left !important;
+    @apply text-brand font-bold text-base sm:text-lg text-center !important;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
   .chart-description {
-    @apply subtitle-1 mt-2 w-full text-white/70 md:text-center lg:text-left !important;
+    @apply text-lightBlue-800 text-sm sm:text-base text-center mt-1 !important;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
 
   /* FileUploader */
@@ -519,5 +547,54 @@
 
   .text-error {
     color: #b80000;
+  }
+
+  /* Dashboard Redesign */
+  .dashboard-plain-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  @media (min-width: 1024px) {
+    .dashboard-plain-grid {
+      grid-template-columns: 1fr 1.2fr;
+      align-items: start;
+      gap: 2rem;
+      padding: 1rem;
+    }
+  }
+  .dashboard-left, .dashboard-right {
+    width: 100%;
+  }
+  .dashboard-card {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 18px;
+    box-shadow: none;
+    padding: 2rem 1.5rem;
+    margin-bottom: 0;
+  }
+  .dashboard-summary-card {
+    background: #f8fafc;
+    border: 2px solid black;
+    border-radius: 14px;
+    box-shadow: none !important;
+    margin-top: 1rem;
+    padding: 1.25rem 1rem;
+  }
+  .dashboard-summary-card::before,
+  .dashboard-summary-card:hover::before {
+    display: none !important;
+  }
+  .chart {
+    background: #f8fafc;
+    border: 2px solid black;
+    border-radius: 18px;
+    box-shadow: none !important;
+    min-height: unset;
+    max-width: 320px;
+    max-height: 320px;
+    padding: 1.5rem 0 1rem 0;
   }
 }
