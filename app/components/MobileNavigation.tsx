@@ -46,11 +46,11 @@ const MobileNavigation = ({ $id: ownerId, accountId, fullName, avatar, email }: 
             <Image src="/assets/icons/menu.svg" alt="menu" width={30} height={30}/>
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className="shad-sheet h-screen px-3 w-[280px]">
+        <SheetContent side="right" className="shad-sheet min-h-screen px-3 w-[280px]">
             <SheetTitle>
               <div className="header-user">
                 <Image
-                  src={avatar && avatar.trim() !== '' ? avatar : avatarPlaceholderUrl} 
+                  src={avatar && avatar.trim() !== '' ? avatar : avatarPlaceholderUrl}
                   alt="avatar"
                   width={44}
                   height={44}
